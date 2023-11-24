@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
+
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.15.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.10.0'
+
+    testImplementation 'io.cucumber:cucumber-java:7.13.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.13.0'
+    testImplementation 'io.cucumber:cucumber-core:7.13.0'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    cucumberRunTime {
+        extendsFrom testImplementation
+    }
+}
+
+def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+
+tasks.register('cucumber') {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRunTime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/test-report.html',
+                    '--plugin', 'json:reports/test-report.json',
+                    '--plugin', 'pretty',
+                    '--glue', 'com.automation.demoblaze',
+                    '--tags', "${tags}",
+                    'src/test/resources/features/website'
+            ]
+        }
+    }
+}
