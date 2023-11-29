@@ -33,6 +33,13 @@ jobs:
       with: 
         name: Automation Demoblaze Report 
         path: reports/web
+    - name: Github Pages Report Web
+      uses: crazy-max/ghaction-github-pages@v4
+      with:
+        target_branch: gh-pages
+        build_dir: reports/web
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   runAutomationAPITest:
       runs-on: ubuntu-latest
       steps:
@@ -52,5 +59,13 @@ jobs:
         with: 
           name: Automation Dummy API Report 
           path: reports/api
+      - name: Github Pages Report API
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: reports/api
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
 
