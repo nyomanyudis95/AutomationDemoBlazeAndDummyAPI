@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  runAutomationDemoBlaze:
+  runAutomationWebTest:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -27,13 +27,8 @@ jobs:
       run: chmod +x gradlew
     - name: Execute gradle command for Demoblaze Automation test 
       run: ./gradlew web
-    - name: Upload a Build Artifact
-      uses: actions/upload-pages-artifact@v2.0.0
-      if: always()
-      with: 
-        name: Demoblaze Automation Report 
-        path: reports
   runAutomationAPITest:
+      needs: runAutomationWebTest
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
@@ -50,7 +45,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2.0.0
         if: always()
         with: 
-          name: Dummy API Report 
+          name: Automation Dummy API and Demoblaze Report 
           path: reports
 
 
