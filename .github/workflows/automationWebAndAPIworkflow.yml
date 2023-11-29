@@ -25,17 +25,13 @@ jobs:
         run: chmod +x gradlew
       - name: Execute gradle command for DummyAPI Automation test 
         run: ./gradlew api
-      - name: Upload a Report Automation API
-        uses: actions/upload-pages-artifact@v2.0.0
-        if: always()
-        with: 
-          name: Automation Dummy API Report 
-          path: reports/api
-      - name: Github Pages Report API
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: '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'
-          publish_dir: reports/api
+      - name: Commit report
+        run: |
+          git config --global user.name 'nyomanyudis'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
+
 
 
 
