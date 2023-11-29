@@ -34,7 +34,6 @@ jobs:
         name: Automation Demoblaze Report 
         path: reports/web
   runAutomationAPITest:
-      needs: runAutomationWebTest
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
