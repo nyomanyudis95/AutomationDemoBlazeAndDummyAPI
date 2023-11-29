@@ -16,7 +16,7 @@ dependencies {
     testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
 
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.15.0'
-    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.10.0'
+    testImplementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.6.2'
 
     testImplementation 'io.cucumber:cucumber-java:7.13.0'
     testImplementation 'io.cucumber:cucumber-junit:7.13.0'

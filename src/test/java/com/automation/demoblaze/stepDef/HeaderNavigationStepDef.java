@@ -102,7 +102,7 @@ public class HeaderNavigationStepDef extends BaseTest {
                 break;
             case "ProductPage":{
                 driver.get(Configuration.urlBase);
-                this.selectedProduct = homePage.getFirstItemInformation();
+                this.selectedProduct = homePage.getFiçrstItemInformation();
                 homePage.clickFirstItemImage();
                 break;
             }

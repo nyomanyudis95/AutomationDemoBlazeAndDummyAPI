@@ -5,6 +5,7 @@ import com.automation.demoblaze.componentObject.HeaderNavigationComponent;
 import com.automation.demoblaze.componentObject.LoginModalComponent;
 import com.automation.demoblaze.componentObject.SignUpModalComponent;
 import com.automation.demoblaze.pageObject.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -30,7 +31,8 @@ public class BaseTest {
 
     public void initDriverAndPage(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
+        options.addArguments("--headless");
+        WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver(options);
         this.homePage = new HomePage(driver);
         this.productPage = new ProductPage(driver);
