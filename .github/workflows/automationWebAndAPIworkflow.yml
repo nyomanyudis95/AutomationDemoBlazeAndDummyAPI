@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
 
 
-permissions:
-  contents: write-all
+permissions: write-all
 
 jobs:
   runAutomationAPITest:
