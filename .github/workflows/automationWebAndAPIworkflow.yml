@@ -33,6 +33,7 @@ jobs:
           git commit -m "Automate docs api"
           git push
   runAutomationWebTest:
+      needs: runAutomationAPITest
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
