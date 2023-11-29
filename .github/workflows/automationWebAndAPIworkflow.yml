@@ -25,16 +25,17 @@ jobs:
         run: chmod +x gradlew
       - name: Execute gradle command for DummyAPI Automation test 
         run: ./gradlew api
-      - name: Commit report
-        run: |
-          git config --local user.email "nyomanyudis95@gmail.com"
-          git config --local user.name "nyomanyudis95"
-  
-          git add .
-          git commit -m "Generated autoamtion report"
-  
-          # Replace 'main' with your branch name
-          git push origin main
+      - name: Upload a Report Automation Web
+        uses: actions/upload-artifact@v3.1.0
+        if: always()
+        with: 
+          name: Automation Demoblaze Report 
+          path: docs
+      - name: Github Pages Report Web
+        uses: peaceiris/actions-gh-pages@3.7.3
+        with:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_DIR: docs
 
 
 
