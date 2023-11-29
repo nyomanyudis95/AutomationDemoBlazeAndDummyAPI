@@ -1,3 +1,4 @@
+@web @Login
 Feature: Login
   Scenario Outline: user can close sign in modal with button close
     Given user already in "<Page>"

@@ -1,3 +1,4 @@
+@web @OrderProduct
 Feature: Order product feature
   Background: User already pick one item and in Cart Page
     Given user already in HomScreen

@@ -1,3 +1,4 @@
+@web @Logout
 Feature: Logout Feature
   Scenario Outline: User can logout by click logout in header navigation
     Given user already in "<Page>"

@@ -1,3 +1,4 @@
+@web @AboutUs
 Feature: All Feature in About Us
   Scenario Outline: User hide modal about us by click button close
     Given user already in "<Page>"

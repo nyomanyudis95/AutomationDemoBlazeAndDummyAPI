@@ -1,3 +1,4 @@
+@web @Product
 Feature: User can select, add to cart, and delete of product feature
   Background: User already click first item in Home Screen and go to Product Page
     Given user already in HomScreen

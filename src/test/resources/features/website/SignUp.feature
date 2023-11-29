@@ -1,3 +1,4 @@
+@web @SignUp
 Feature: Sign Up
     Scenario Outline: user can close sign up modal with button close
       Given user already in "<Page>"

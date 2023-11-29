@@ -22,6 +22,12 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-junit:7.13.0'
     testImplementation 'io.cucumber:cucumber-core:7.13.0'
 
+    testImplementation 'io.rest-assured:rest-assured:5.3.1'
+    testImplementation 'org.json:json:20230618'
+    testImplementation 'org.testng:testng:7.7.0'
+    testImplementation 'org.apache.commons:commons-io:1.3.2'
+    testImplementation 'io.rest-assured:json-schema-validator:5.3.1'
+
 
 }
 
@@ -35,9 +41,9 @@ configurations {
     }
 }
 
-def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+def tagsWeb = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
 
-tasks.register('cucumber') {
+tasks.register('web') {
     dependsOn assemble, testClasses
     doLast {
         javaexec {
@@ -48,8 +54,28 @@ tasks.register('cucumber') {
                     '--plugin', 'json:reports/test-report.json',
                     '--plugin', 'pretty',
                     '--glue', 'com.automation.demoblaze',
-                    '--tags', "${tags}",
+                    '--tags', "${tagsWeb}",
                     'src/test/resources/features/website'
+            ]
+        }
+    }
+}
+
+def tagsAPI = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+
+tasks.register('api') {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRunTime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/test-report.html',
+                    '--plugin', 'json:reports/test-report.json',
+                    '--plugin', 'pretty',
+                    '--glue', 'com.automation.dummyapi',
+                    '--tags', "${tagsAPI}",
+                    'src/test/resources/features/api'
             ]
         }
     }

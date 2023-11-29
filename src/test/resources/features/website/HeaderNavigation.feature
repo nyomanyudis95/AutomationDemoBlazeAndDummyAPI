@@ -1,3 +1,4 @@
+@web @HeaderNavigation
 Feature: Check all menu header navigation
     Scenario Outline: User can open modal sign up
         Given user already in "<Page>"

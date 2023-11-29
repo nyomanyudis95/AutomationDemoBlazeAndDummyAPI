@@ -1,3 +1,4 @@
+@web @Contact
 Feature: Test All feature in Contact Modal Page
    Scenario Outline: User can close contact modal with btn close
      Given user already in "<Page>"

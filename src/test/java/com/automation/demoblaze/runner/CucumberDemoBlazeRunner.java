@@ -9,5 +9,5 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/website",
         glue = {"com.automation.demoblaze"}
 )
-public class CucumberRunner {
+public class CucumberDemoBlazeRunner {
 }
