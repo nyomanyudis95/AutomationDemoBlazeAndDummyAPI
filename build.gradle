@@ -50,8 +50,8 @@ tasks.register('web') {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRunTime + sourceSets.main.output + sourceSets.test.output
             args = [
-                    '--plugin', 'html:reports/test-report.html',
-                    '--plugin', 'json:reports/test-report.json',
+                    '--plugin', 'html:reports/automation-demoblaze-report.html',
+                    '--plugin', 'json:reports/automation-demoblaze-report.json',
                     '--plugin', 'pretty',
                     '--glue', 'com.automation.demoblaze',
                     '--tags', "${tagsWeb}",
@@ -70,8 +70,8 @@ tasks.register('api') {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRunTime + sourceSets.main.output + sourceSets.test.output
             args = [
-                    '--plugin', 'html:reports/test-report.html',
-                    '--plugin', 'json:reports/test-report.json',
+                    '--plugin', 'html:reports/automation-dummyapi-report.html',
+                    '--plugin', 'json:reports/automation-dummyapi-report.json',
                     '--plugin', 'pretty',
                     '--glue', 'com.automation.dummyapi',
                     '--tags', "${tagsAPI}",
