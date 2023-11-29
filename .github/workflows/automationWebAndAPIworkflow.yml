@@ -27,6 +27,12 @@ jobs:
       run: chmod +x gradlew
     - name: Execute gradle command for Demoblaze Automation test 
       run: ./gradlew web
+    - name: Upload a Report Automation Web
+      uses: actions/upload-pages-artifact@v2.0.0
+      if: always()
+      with: 
+        name: Automation Demoblaze Report 
+        path: reports/web
   runAutomationAPITest:
       needs: runAutomationWebTest
       runs-on: ubuntu-latest
@@ -41,11 +47,11 @@ jobs:
         run: chmod +x gradlew
       - name: Execute gradle command for DummyAPI Automation test 
         run: ./gradlew api
-      - name: Upload a Build Artifact
+      - name: Upload a Report Automation API
         uses: actions/upload-pages-artifact@v2.0.0
         if: always()
         with: 
-          name: Automation Dummy API and Demoblaze Report 
-          path: reports
+          name: Automation Dummy API Report 
+          path: reports/api
 
 
