@@ -24,6 +24,13 @@ jobs:
         run: chmod +x gradlew
       - name: Execute gradle command for DummyAPI Automation test 
         run: ./gradlew api
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Automate docs"
+          git push
       - name: Upload a Report Automation Web
         uses: actions/upload-artifact@v3.1.0
         if: always()
@@ -35,6 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs
+      
 
 
 
