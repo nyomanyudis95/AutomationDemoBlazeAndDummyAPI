@@ -34,7 +34,7 @@ jobs:
       - name: Github Pages Report API
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: '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'
           publish_dir: reports/api
 
 
