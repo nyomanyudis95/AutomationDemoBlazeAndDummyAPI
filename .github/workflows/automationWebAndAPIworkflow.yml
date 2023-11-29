@@ -11,20 +11,7 @@ on:
 permissions: write-all
 
 jobs:
-  runAutomationAPITest:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-      - name: Setup gradlew
-        run: chmod +x gradlew
-      - name: Execute gradle command for DummyAPI Automation test 
-        run: ./gradlew api
-  runAutomationWebTest:
+  runAutomationWebAndApiTest:
       needs: runAutomationAPITest
       runs-on: ubuntu-latest
       steps:
@@ -40,11 +27,9 @@ jobs:
         uses: browser-actions/setup-chrome@v1.3.0
       - name: Execute gradle command for DummyAPI Automation test 
         run: ./gradlew web
-  runMakeAutomateReport:
-      needs: runAutomationWebTest
-      runs-on: ubuntu-latest
-      steps:
-      - name: Commit and push changes
+      - name: Execute gradle command for DummyAPI Automation test 
+        run: ./gradlew api
+      - name: Commit and push changes reports
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
@@ -52,6 +37,7 @@ jobs:
           git add .
           git commit -m "Automate reports"
           git push
+  
       
 
 
