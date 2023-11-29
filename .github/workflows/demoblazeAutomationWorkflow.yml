@@ -24,7 +24,7 @@ jobs:
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.3.0
       with:
-        chrome-version: 119.0.6045.199
+        chrome-version: '119.0.6045.199'
     - name: Setup gradlew
       run: chmod +x gradlew
     - name: Execute gradle command for Demoblaze Automation test 
