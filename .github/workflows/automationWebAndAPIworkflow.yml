@@ -1,4 +1,4 @@
-name: DemoBlaze Automation Workflow
+name: DemoBlaze Automation Workflow 2
 
 on:
   push:
